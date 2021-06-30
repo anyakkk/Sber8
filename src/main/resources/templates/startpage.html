@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Сокращатель ссылок</title>
+</head>
+<body>
+<div class = "container p-3 border">
+    <h1>Сокращение ссылок</h1>
+    <form action="#" th:action="@{/do}" th:object="${Short}" method="get">
+
+    <table class="table table-bordered">
+        <tr>
+            <th scope="col">Сокращенная ссылка</th>
+            <th scope="col">Полная ссылка</th>
+            <th scope="col">Удаление</th>
+        </tr>
+        <tbody>
+
+        <tr th:each="short : ${Short}">
+            <td th:text="${short.shortUrl}"/></td>
+            <td th:text="${short.cutUrl()}"/></td>
+            <td>
+                <a th:href="'do/remove/' + ${short.shortUrl}">
+                    <i type="button" class="btn btn-light" >
+                        <i class="bi bi-trash"  ></i>
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </i>
+                </a>
+            </td>
+        </tr>
+        <a href="https://icons8.com/icon/uaoORHGarIl3/trash"></a>
+        </tbody>
+    </table>
+
+
+    <div class="addNew">
+        <a th:href="@{/}">Добавить новую ссылку</a>
+    </div>
+
+    </form>
+</div>
+</body>
+</html>
